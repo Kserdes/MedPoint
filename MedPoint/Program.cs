@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MedPoint.Data;
 using Microsoft.Extensions.Options;
 using MedPoint.Models;
+using MedPoint.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MedPointContextConnection") ?? throw new InvalidOperationException("Connection string 'MedPointContextConnection' not found.");
@@ -14,7 +15,7 @@ builder.Services.AddDefaultIdentity<IdentityAccount>(options => options.SignIn.R
     .AddEntityFrameworkStores<MedPoint.Data.AppDBContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IDoctorsService, DoctorsService>();
 var app = builder.Build();
 AppDBSeeder.Seed(app);
 

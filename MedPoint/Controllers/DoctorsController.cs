@@ -1,4 +1,5 @@
 ﻿using MedPoint.Data;
+using MedPoint.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 
@@ -7,15 +8,19 @@ namespace MedPoint.Controllers
     public class DoctorsController : Controller
     {
 
-        private readonly AppDBContext _context;
-        public DoctorsController(AppDBContext context)
+        private readonly IDoctorsService _service;
+        public DoctorsController(IDoctorsService service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Doctors.ToList();
+            var data = await _service.GetAll();
             return View(data);
+        }
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }

@@ -6,7 +6,7 @@ using MedPoint.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MedPoint.Areas.Identity.Data
+namespace MedPoint.Data
 {
     public class AppUserConfiguration : IEntityTypeConfiguration<IdentityAccount>
     {

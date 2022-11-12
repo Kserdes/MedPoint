@@ -4,7 +4,7 @@ namespace MedPoint.Data.Services
 {
     public interface IDoctorsService
     {
-        IEnumerable<Doctor> GetAll();
+        Task<IEnumerable<Doctor>> GetAll();
         Doctor GetById(int id);
         void Add(Doctor model);
         void Update(Doctor model);

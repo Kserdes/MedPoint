@@ -1,9 +1,16 @@
 ﻿using MedPoint.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedPoint.Data.Services
 {
     public class DoctorsService : IDoctorsService
     {
+        private readonly AppDBContext _context;
+        public DoctorsService(AppDBContext context)
+        {
+            _context = context;
+        }
+
         public void Add(Doctor model)
         {
             throw new NotImplementedException();
@@ -14,9 +21,10 @@ namespace MedPoint.Data.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Doctor> GetAll()
+        public async Task<IEnumerable<Doctor>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _context.Doctors.ToListAsync();
+            return result;
         }
 
         public Doctor GetById(int id)

@@ -4,10 +4,10 @@ namespace MedPoint.Data.Services
 {
     public interface IDoctorsService
     {
-        Task<IEnumerable<Doctor>> GetAll();
-        Doctor GetById(int id);
-        void Add(Doctor model);
-        void Update(Doctor model);
+        Task<IEnumerable<Doctor>> GetAllAsync();
+        Task<Doctor> GetByIdAsync(int id);
+        Task AddAsync(Doctor model);
+        Task<Doctor> UpdateAsync(int it, Doctor model);
         void Delete(int id);
     }
 }

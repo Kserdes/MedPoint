@@ -16,7 +16,7 @@ namespace MedPoint.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAll();
+            var data = await _service.GetAllAsync();
             return View(data);
         }
         public IActionResult Create()
@@ -32,7 +32,37 @@ namespace MedPoint.Controllers
                 
 
             }
-            _service.Add(doctor);
+            await _service.AddAsync(doctor);
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            var doctor = await _service.GetByIdAsync(id);
+            if(doctor == null) 
+            {
+                return View("Empty");
+            }
+            return View(doctor);
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var doctorEdit = await _service.GetByIdAsync(id);
+            if (doctorEdit == null)
+            {
+                return View("Nie znaleziono");
+            }
+            return View(doctorEdit);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Doctor doctor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(doctor);
+
+
+            }
+            await _service.UpdateAsync(id, doctor);
             return RedirectToAction(nameof(Index));
         }
     }

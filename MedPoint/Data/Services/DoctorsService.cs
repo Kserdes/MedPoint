@@ -11,10 +11,10 @@ namespace MedPoint.Data.Services
             _context = context;
         }
 
-        public void Add(Doctor model)
+        public async Task AddAsync(Doctor model)
         {
-            _context.Doctors.Add(model);
-            _context.SaveChangesAsync();
+            await _context.Doctors.AddAsync(model);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -22,20 +22,23 @@ namespace MedPoint.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Doctor>> GetAll()
+        public async Task<IEnumerable<Doctor>> GetAllAsync()
         {
             var result = await _context.Doctors.ToListAsync();
             return result;
         }
 
-        public Doctor GetById(int id)
+        public async Task<Doctor> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Doctors.FindAsync(id);
+            return result;
         }
 
-        public void Update(Doctor model)
+        public async Task<Doctor> UpdateAsync(int it, Doctor model)
         {
-            throw new NotImplementedException();
+            _context.Update(model);
+            await _context.SaveChangesAsync();
+            return model;
         }
     }
 }

@@ -95,7 +95,7 @@ namespace MedPoint.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = " {0} musi mieć przynajmniej {2} znaków i maksymalnie {1}", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "hasło")]
+            [Display(Name = "Hasło")]
             public string Password { get; set; }
 
             /// <summary>
@@ -103,7 +103,7 @@ namespace MedPoint.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Potwierdź hasło")]
+            [Display(Name = "Potwierdź Hasło")]
             [Compare("Password", ErrorMessage = "Hasła nie są takie same!")]
             public string ConfirmPassword { get; set; }
         }

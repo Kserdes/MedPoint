@@ -13,7 +13,8 @@ namespace MedPoint.Data.Services
 
         public void Add(Doctor model)
         {
-            throw new NotImplementedException();
+            _context.Doctors.Add(model);
+            _context.SaveChangesAsync();
         }
 
         public void Delete(int id)

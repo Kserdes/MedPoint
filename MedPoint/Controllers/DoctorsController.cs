@@ -1,5 +1,6 @@
 ﻿using MedPoint.Data;
 using MedPoint.Data.Services;
+using MedPoint.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
 
@@ -21,6 +22,18 @@ namespace MedPoint.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("ProfilePictureURL,FullName,Specialization")]Doctor doctor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(doctor);
+                
+
+            }
+            _service.Add(doctor);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

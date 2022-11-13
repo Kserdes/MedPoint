@@ -18,8 +18,8 @@ namespace MedPoint.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
+            var data = _context.Doctors.ToList();
+            return View(data);
         }
 
         public IActionResult Privacy()

@@ -26,6 +26,10 @@ namespace MedPoint.Controllers
         {         
             return View();
         }
+        public IActionResult Visit()
+        {
+            return View("~/Views/Visits/Index.aspx");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -8,7 +8,6 @@ namespace MedPoint.Models
         public int ID { get; set; }
         public int DoctorID {get; set;}
         public int VisitID { get; set; }
-
         public Doctor Doctor { get; set; }
         public Visit Visit { get; set; }
     }

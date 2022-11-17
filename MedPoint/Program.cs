@@ -11,11 +11,12 @@ var connectionString = builder.Configuration.GetConnectionString("MedPointContex
 builder.Services.AddDbContext<MedPoint.Data.AppDBContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityAccount>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<IdentityAccount>(options => options.SignIn.RequireConfirmedAccount = false) 
     .AddEntityFrameworkStores<MedPoint.Data.AppDBContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDoctorsService, DoctorsService>();
+builder.Services.AddScoped<IVisitsService, VisitsService>();
 var app = builder.Build();
 AppDBSeeder.Seed(app);
 

@@ -159,16 +159,22 @@ namespace MedPoint.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("DoctorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("PatientName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("isBusy")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

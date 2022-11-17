@@ -17,9 +17,11 @@ namespace MedPoint.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Doctors.FindAsync(id);
+            _context.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Doctor>> GetAllAsync()

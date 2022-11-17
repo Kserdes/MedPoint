@@ -46,7 +46,9 @@ namespace MedPoint.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PatientName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoctorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isBusy = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

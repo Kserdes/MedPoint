@@ -8,6 +8,6 @@ namespace MedPoint.Data.Services
         Task<Doctor> GetByIdAsync(int id);
         Task AddAsync(Doctor model);
         Task<Doctor> UpdateAsync(int it, Doctor model);
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

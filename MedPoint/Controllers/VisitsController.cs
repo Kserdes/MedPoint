@@ -29,7 +29,7 @@ namespace MedPoint.Controllers
 
             }
             await _service.AddAsync(visit);
-            return RedirectToAction("Index");
+            return View("Created");
         }
     }
 }

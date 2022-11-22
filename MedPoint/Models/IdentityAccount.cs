@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace MedPoint.Models
 {
@@ -6,5 +8,7 @@ namespace MedPoint.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+  
+
     }
 }

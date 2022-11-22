@@ -4,6 +4,7 @@ using MedPoint.Data;
 using Microsoft.Extensions.Options;
 using MedPoint.Models;
 using MedPoint.Data.Services;
+using System.Security.Principal;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("MedPointContextConnection") ?? throw new InvalidOperationException("Connection string 'MedPointContextConnection' not found.");

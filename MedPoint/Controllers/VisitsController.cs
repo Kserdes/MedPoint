@@ -1,5 +1,6 @@
 ﻿using MedPoint.Data.Services;
 using MedPoint.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -13,14 +14,15 @@ namespace MedPoint.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(IdentityAccount account)
         {
-            var doctorList = await _service.GetDoctorsListAsync();
-            return View(doctorList);
+            var model = await _service.GetDoctorsListAsync();
+            model.StartDate = DateTime.Today;
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index([Bind("PatientName,DoctorName,StartDate")] Visit visit)
+        public async Task<IActionResult> Created([Bind("PatientName,DoctorName,StartDate")] Visit visit)
         {
             var doctorList = await _service.GetDoctorsListAsync();
             if (!ModelState.IsValid)

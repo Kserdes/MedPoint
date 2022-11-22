@@ -1,4 +1,5 @@
 ﻿using MedPoint.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,6 +50,7 @@ namespace MedPoint.Data.Services
             }
             return model;
         }
+
 
         public async Task<Visit> UpdateAsync(int id, Visit model)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using MedPoint.Data.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,6 +13,8 @@ namespace MedPoint.Models
         [DisplayName("Imie i nazwisko pacjenta")]
         public string PatientName { get; set; }
         public string DoctorName { get; set; }
+        [Required]
+        [DateVal("Date can be only higher than today")]
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool isBusy { get; set; }

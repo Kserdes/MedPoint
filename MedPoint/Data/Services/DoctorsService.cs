@@ -36,11 +36,11 @@ namespace MedPoint.Data.Services
             return result;
         }
 
-        public async Task<Doctor> UpdateAsync(int it, Doctor model)
+        public async Task<Doctor> UpdateAsync(int id, Doctor doctor)
         {
-            _context.Update(model);
+            _context.Update(doctor);
             await _context.SaveChangesAsync();
-            return model;
+            return doctor;
         }
     }
 }
